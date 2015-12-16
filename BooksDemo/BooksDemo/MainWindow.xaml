@@ -1,0 +1,25 @@
+﻿<Window x:Class="BooksDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksDemo"
+        xmlns:model="clr-namespace:BooksDemo.Models"
+        xmlns:repos="clr-namespace:BooksDemo.Repositories"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <!--<model:Book x:Key="theBook" Title="Professional C# 6" Publisher="Wrox Press" />-->
+        
+        <ObjectDataProvider x:Key="theBook" ObjectType="{x:Type repos:BooksRepository}" MethodName="GetTheBook" />
+    </Window.Resources>
+    <!--<Grid DataContext="{StaticResource theBook}">-->
+    <Grid>
+        <StackPanel>
+            <TextBox Text="{Binding Title, Mode=TwoWay}" />
+            <TextBox Text="{Binding Publisher, Mode=TwoWay}" />
+            <Button Click="OnShowBook">Show Book</Button>
+            <Button Click="OnChangeBook">Change Book</Button>
+        </StackPanel>
+    </Grid>
+</Window>

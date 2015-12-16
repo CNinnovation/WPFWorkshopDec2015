@@ -1,0 +1,30 @@
+﻿<Window x:Class="RotateDynamic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RotateDynamic"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Slider x:Name="slider1" Minimum="0" Maximum="360" Value="0" ValueChanged="OnSliderValueChanged" />
+        <Slider Grid.Row="1" x:Name="slider2" Minimum="0" Maximum="360" Value="0" ValueChanged="OnSliderValueChanged2" />
+        <StackPanel Grid.Row="2">
+            <StackPanel.RenderTransform>
+                <RotateTransform Angle="0" x:Name="angle1" />
+            </StackPanel.RenderTransform>
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="0" x:Name="angle2" />
+            </StackPanel.LayoutTransform>
+            <Button  Width="200" Height="90" Click="OnButtonClick">Click Me!</Button>
+        </StackPanel>
+
+        
+    </Grid>
+</Window>

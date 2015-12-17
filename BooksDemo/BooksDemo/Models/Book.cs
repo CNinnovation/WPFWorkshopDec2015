@@ -9,6 +9,19 @@ namespace BooksDemo.Models
 {
     public class Book : BindableBase
     {
+        public Book()
+            : this("unknown", "unknown", "unknown")
+        {
+
+        }
+
+        public Book(string title, string publisher, params string[] authors)
+        {
+            _title = title;
+            _publisher = publisher;
+            Authors = new List<string>(authors);
+        }
+
         //public string Title { get; set; }
         //public string Publisher { get; set; }
 
@@ -33,6 +46,9 @@ namespace BooksDemo.Models
                 SetProperty(ref _publisher, value);
             }
         }
+
+        public IEnumerable<string> Authors { get; }
+
 
 
         public override string ToString() => Title;  // expression bodied member

@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookTemplateSelector.cs" />
+    <Compile Include="Converters\StringCollectionToStringConverter.cs" />
     <Compile Include="Repositories\BooksRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -2,6 +2,7 @@
 using BooksDemo.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,14 @@ namespace BooksDemo
     public partial class MainWindow : Window
     {
         private Book _theBook;
+        private IList<Book> _books;
         public MainWindow()
         {
             InitializeComponent();
-            _theBook = new BooksRepository().GetTheBook();
-            this.DataContext = _theBook;
+//            _theBook = new BooksRepository().GetTheBook();
+            _books = new ObservableCollection<Book>(new BooksRepository().GetBooks());
+            //          this.DataContext = _theBook;
+            this.DataContext = _books;
         }
 
         private void OnShowBook(object sender, RoutedEventArgs e)
@@ -38,6 +42,11 @@ namespace BooksDemo
         private void OnChangeBook(object sender, RoutedEventArgs e)
         {
             _theBook.Title = "Professional C# 6";
+        }
+
+        private void OnAddBook(object sender, RoutedEventArgs e)
+        {
+            _books.Add(new Book { Title = "Programming Universal Apps", Publisher = "Self" });
         }
     }
 }

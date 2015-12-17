@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{369881DA-029E-490C-BCAE-1A36D765EF0A}</ProjectGuid>
+    <ProjectGuid>{8C44D059-478B-4718-A80A-431B9072E88B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnotherSuperCoolFramework</RootNamespace>
-    <AssemblyName>AnotherSuperCoolFramework</AssemblyName>
+    <RootNamespace>BooksModels</RootNamespace>
+    <AssemblyName>BooksModels</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,8 +39,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableBase.cs" />
-    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="BooksRepository.cs" />
+    <Compile Include="IBooksRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

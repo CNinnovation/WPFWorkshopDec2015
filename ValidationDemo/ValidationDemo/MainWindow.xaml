@@ -28,6 +28,16 @@
         <StackPanel Orientation="Vertical">
             <TextBox Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Text="{Binding Val1, ValidatesOnExceptions=True}" Margin="8" />
             <TextBox Text="{Binding Val2, ValidatesOnDataErrors=True}" Margin="8" />
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="Val2">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule />
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <Button Content="Show Value" Click="OnShowValue" Margin="8" />
         </StackPanel>
     </Grid>

@@ -1,0 +1,34 @@
+﻿<Window x:Class="ValidationDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValidationDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
+                            Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ValidationTemplate">
+            <DockPanel>
+                <AdornedElementPlaceholder />
+                <TextBlock Foreground="Red" FontSize="24">!</TextBlock>
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBox Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Text="{Binding Val1, ValidatesOnExceptions=True}" Margin="8" />
+            <TextBox Text="{Binding Val2, ValidatesOnDataErrors=True}" Margin="8" />
+            <Button Content="Show Value" Click="OnShowValue" Margin="8" />
+        </StackPanel>
+    </Grid>
+</Window>

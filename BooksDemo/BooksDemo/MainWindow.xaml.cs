@@ -32,6 +32,9 @@ namespace BooksDemo
             _books = new ObservableCollection<Book>(new BooksRepository().GetBooks());
             //          this.DataContext = _theBook;
             this.DataContext = _books;
+
+            CollectionViewSource.GetDefaultView(_books).Filter = o => (o as Book).Publisher == "Wrox Press";
+            CollectionViewSource.GetDefaultView(_books).MoveCurrentToLast();
         }
 
         private void OnShowBook(object sender, RoutedEventArgs e)

@@ -7,6 +7,7 @@
         xmlns:model="clr-namespace:BooksDemo.Models"
         xmlns:repos="clr-namespace:BooksDemo.Repositories"
         xmlns:conv="clr-namespace:BooksDemo.Converters"
+        xmlns:comp="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
@@ -14,6 +15,14 @@
         <conv:StringCollectionToStringConverter x:Key="StringCollectionConverter" />
         <ObjectDataProvider x:Key="theBook" ObjectType="{x:Type repos:BooksRepository}" MethodName="GetTheBook" />
 
+        <ObjectDataProvider x:Key="books" ObjectType="{x:Type repos:BooksRepository}" MethodName="GetBooks" />
+
+        <CollectionViewSource x:Key="cvs" Source="{StaticResource books}">
+            <CollectionViewSource.SortDescriptions>
+                <comp:SortDescription Direction="Ascending" PropertyName="Publisher" />
+                <comp:SortDescription Direction="Ascending" PropertyName="Title" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
         <DataTemplate DataType="{x:Type model:Book}" x:Key="wroxBookTemplate">
             <Border BorderBrush="Red" BorderThickness="2">
                 <Grid>
@@ -51,6 +60,7 @@
             WroxBookTemplate="{StaticResource wroxBookTemplate}" />
     </Window.Resources>
     <!--<Grid DataContext="{StaticResource theBook}">-->
+    <!--<Grid DataContext="{StaticResource cvs}">-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />

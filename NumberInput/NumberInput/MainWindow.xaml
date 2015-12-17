@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberInput"
+        xmlns:myControls="clr-namespace:MyCustomControls;assembly=MyCustomControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <local:HorizontalConverter x:Key="HorizontalConverter" />
         <local:IsNumberConverter x:Key="IsNumberConverter" />
+
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -19,12 +22,11 @@
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="HorizontalContentAlignment" 
-                Value="{Binding Path=Tag, 
-                RelativeSource={RelativeSource Self}, 
-                Converter={StaticResource HorizontalConverter}}" />
+                        Value="{Binding Path=Tag, 
+                        RelativeSource={RelativeSource Self}, 
+                        Converter={StaticResource HorizontalConverter}}" />
                 </Style>
             </StackPanel.Resources>
-            <!--<TextBox Text="{Binding Val1}" HorizontalContentAlignment="{Binding Path=Val1, Converter={StaticResource HorizontalConverter}}"   />-->
             <TextBox Text="{Binding Val2}" Tag="{Binding Val2}"  />
             <TextBox Text="{Binding Val1}" Tag="{Binding Val1}" />
             <Button Content="One" />
@@ -45,7 +47,12 @@
             </StackPanel.Resources>
             <TextBox Text="{Binding Val2}" Tag="{Binding Val2}"  />
             <TextBox Text="{Binding Val1}" Tag="{Binding Val1}" />
-            <Button Content="One" />
+            <Button Content="Two" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <TextBox Text="{Binding Val2}" />
+            <myControls:NumberBox Text="{Binding Val1}" />
+            <Button Content="Three" />
         </StackPanel>
     </Grid>
 </Window>

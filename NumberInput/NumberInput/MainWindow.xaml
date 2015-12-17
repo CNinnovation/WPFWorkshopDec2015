@@ -1,0 +1,51 @@
+﻿<Window x:Class="NumberInput.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NumberInput"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:HorizontalConverter x:Key="HorizontalConverter" />
+        <local:IsNumberConverter x:Key="IsNumberConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="HorizontalContentAlignment" 
+                Value="{Binding Path=Tag, 
+                RelativeSource={RelativeSource Self}, 
+                Converter={StaticResource HorizontalConverter}}" />
+                </Style>
+            </StackPanel.Resources>
+            <!--<TextBox Text="{Binding Val1}" HorizontalContentAlignment="{Binding Path=Val1, Converter={StaticResource HorizontalConverter}}"   />-->
+            <TextBox Text="{Binding Val2}" Tag="{Binding Val2}"  />
+            <TextBox Text="{Binding Val1}" Tag="{Binding Val1}" />
+            <Button Content="One" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <DataTrigger 
+                            Binding="{Binding Path=Tag, 
+                            RelativeSource={RelativeSource Self}, Converter={StaticResource IsNumberConverter}}"                           
+                            Value="True">
+                            <Setter Property="HorizontalContentAlignment" Value="Right" />
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Text="{Binding Val2}" Tag="{Binding Val2}"  />
+            <TextBox Text="{Binding Val1}" Tag="{Binding Val1}" />
+            <Button Content="One" />
+        </StackPanel>
+    </Grid>
+</Window>

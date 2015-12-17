@@ -33,6 +33,8 @@ namespace ValidationDemo
     }
 
     [Range(0, 33)]
+    [Required]
+    [StringLength(40)]
     public int Value3 { get; set; }
 
     string IDataErrorInfo.this[string columnName]
